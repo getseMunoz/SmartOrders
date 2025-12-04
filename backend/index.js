@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 require('dotenv').config();
+const productRoutes = require('./routes/productRoutes');
+app.use('/api/productos', productRoutes);
 
 // Importar la conexión a la base de datos
 const pool = require('./db'); 
