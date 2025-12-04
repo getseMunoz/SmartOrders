@@ -54,3 +54,11 @@ CREATE TABLE order_items (
     unit_price DECIMAL(10, 2) NOT NULL, -- Precio al momento de la compra
     subtotal DECIMAL(10, 2) GENERATED ALWAYS AS (quantity * unit_price) STORED
 );
+-- Evaluaciones del servicio
+CREATE TABLE evaluations (
+    id SERIAL PRIMARY KEY,
+    order_id INTEGER REFERENCES orders(id),
+    rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
